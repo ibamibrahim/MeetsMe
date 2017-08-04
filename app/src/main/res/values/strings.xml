@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MeetsMe</string>
+    <string name="tagline">Make your networking easier with us!</string>
+    <string name="prompt_signup">Don\'t have an account? Sign up for free!</string>
+</resources>
