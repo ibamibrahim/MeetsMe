@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white_text"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_create_prof"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/subheader_create_prof"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <EditText
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="Your name"/>
+
+    <EditText
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="City where you lived.."/>
+
+    <EditText
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="Your birthday"/>
+
+    <RadioGroup
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I am a.. "
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="male"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="female"/>
+    </RadioGroup>
+
+    <Spinner
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:prompt="Select Occupation"/>
+
+    <EditText
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="Your interests.."/>
+
+    <TextView
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/select_interest"
+        android:textAlignment="center"/>
+
+    <Button
+        style="@style/big_button"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_primary_none"
+        android:text="Join Now!"
+        />
+
+</LinearLayout>

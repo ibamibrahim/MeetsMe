@@ -2,4 +2,13 @@
     <string name="app_name">MeetsMe</string>
     <string name="tagline">Make your networking easier with us!</string>
     <string name="prompt_signup">Don\'t have an account? Sign up for free!</string>
+    <string name="tagline_signup">Want to find people who matches your interest? \n Join
+        Now!</string>
+    <string name="prompt_login">Already have account? Sign In</string>
+    <string name="terms_cond">By clicking the button below, you agree with our Terms and
+        Conditions</string>
+    <string name="header_create_prof">You\'re almost there!</string>
+    <string name="subheader_create_prof">Please fill the form to proceed and start using
+        this application</string>
+    <string name="select_interest">If more than one, separate it with commas</string>
 </resources>
