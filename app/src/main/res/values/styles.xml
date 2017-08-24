@@ -22,9 +22,23 @@
     </style>
 
     <style name="big_button">
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingRight">24dp</item>
         <item name="android:layout_width">280dp</item>
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:textColor">@color/white_text</item>
     </style>
+    <style name="title">
+        <item name="android:textColor">@color/white_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="sub_title" parent="title">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 
 </resources>

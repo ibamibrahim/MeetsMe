@@ -2,17 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:padding="4dp">
+
+    <TextView
+        android:id="@+id/chat_date"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="48dp"
+        android:paddingRight="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/item_chat_date"
+        android:text="Today"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:paddingLeft="8dp"
         android:paddingRight="12dp"
-        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
         android:text="Lorem ipsum ausdhadh uadhsu dausaidhaui "/>
 
     <LinearLayout

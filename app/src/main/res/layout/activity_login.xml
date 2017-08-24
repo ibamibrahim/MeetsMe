@@ -39,9 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="gone"
             android:text="@string/prompt_signup"
-            android:textColor="@color/white_text"/>
+            android:textColor="@color/white_text"
+            android:visibility="gone"/>
 
         <EditText
             style="@style/edit_text"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:hint="Password"/>
 
-        <Button
+        <TextView
             android:id="@+id/button"
             style="@style/big_button"
             android:layout_height="wrap_content"
@@ -93,10 +93,10 @@
                 android:background="@color/white_text"/>
         </LinearLayout>
 
-        <Button
+        <TextView
             style="@style/big_button"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_primary_white"
+            android:background="@drawable/button_fb_none"
             android:text="Sign In With Facebook"
             android:textColor="@color/white_text"/>
 
