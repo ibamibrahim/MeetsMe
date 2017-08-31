@@ -13,4 +13,7 @@
     <string name="select_interest">If more than one, separate it with commas</string>
     <string name="main_activity_slogan">Tap the logo to find people around you!</string>
     <string name="main_activity_slogan_2">Can\'t decide by yourself? Let us decide!</string>
+    <string name="main_activity_button">Match people automatically</string>
+    <string name="message_notes">Notes: Your chat with another user will be deleted after one hour</string>
+    <string name="edit_profile_button">Edit your profile</string>
 </resources>

@@ -47,15 +47,18 @@
             style="@style/edit_text"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:singleLine="true"
             />
 
         <EditText
             style="@style/edit_text"
             android:layout_height="wrap_content"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:singleLine="true"/>
 
         <TextView
-            android:id="@+id/button"
+            android:id="@+id/login_button"
             style="@style/big_button"
             android:layout_height="wrap_content"
             android:background="@drawable/button_primary_white"

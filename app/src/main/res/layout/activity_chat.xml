@@ -25,27 +25,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:orientation="vertical">
 
             <TextView
+                style="@style/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anonymous Fox"
-                style="@style/title"/>
+                android:text="Anonymous Fox"/>
 
             <TextView
+                style="@style/sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Software Engineer at Traveloka"
-                style="@style/sub_title"/>
+                android:text="Software Engineer at Traveloka"/>
         </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chat_header"></android.support.v7.widget.RecyclerView>
+        android:layout_below="@id/chat_header"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
 
         <EditText
             style="@style/edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_weight=".5"
@@ -66,7 +66,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:adjustViewBounds="true"
             android:background="@drawable/button_primary_none"
             android:paddingLeft="8dp"

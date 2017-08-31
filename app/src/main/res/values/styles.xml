@@ -39,6 +39,13 @@
     <style name="sub_title" parent="title">
         <item name="android:textSize">12sp</item>
     </style>
+    <style name="chat_count">
+        <item name="android:background">@drawable/item_chat_count</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
 
 
 </resources>
