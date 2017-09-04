@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import id.meetsme.meetsme.services.LocalServices;
+
 /**
  * Created by Ibam on 8/30/2017.
  */
@@ -51,5 +53,10 @@ public class BaseFragment extends Fragment{
         } else {
             return false;
         }
+    }
+
+    public void logOut() {
+        LocalServices.clearLocalData(getContext());
+        LocalServices.isLoggedIn(getContext());
     }
 }

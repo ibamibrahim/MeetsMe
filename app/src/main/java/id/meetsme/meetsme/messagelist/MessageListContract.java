@@ -4,7 +4,7 @@ import java.util.List;
 
 import id.meetsme.meetsme.BasePresenter;
 import id.meetsme.meetsme.BaseView;
-import id.meetsme.meetsme.services.models.MessageListModel;
+import id.meetsme.meetsme.services.models.response.MessageListModel;
 
 /**
  * Created by Ibam on 8/28/2017.

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import id.meetsme.meetsme.services.models.MessageListModel;
+import id.meetsme.meetsme.services.models.response.MessageListModel;
 
 /**
  * Created by Ibam on 8/28/2017.

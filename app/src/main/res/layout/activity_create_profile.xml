@@ -5,7 +5,8 @@
               android:background="@color/white_text"
               android:gravity="center_horizontal"
               android:orientation="vertical"
-              android:padding="24dp">
+              android:padding="24dp"
+    >
 
     <TextView
         android:layout_width="wrap_content"

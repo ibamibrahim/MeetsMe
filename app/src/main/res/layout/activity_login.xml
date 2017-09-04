@@ -44,6 +44,7 @@
             android:visibility="gone"/>
 
         <EditText
+            android:id="@+id/login_email"
             style="@style/edit_text"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -51,6 +52,7 @@
             />
 
         <EditText
+            android:id="@+id/login_password"
             style="@style/edit_text"
             android:layout_height="wrap_content"
             android:hint="Password"

@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import id.meetsme.meetsme.services.LocalServices;
+
 /**
  * Created by Ibam on 8/28/2017.
  */
@@ -23,9 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showProgressDialog(String text) {
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(text);
-        progressDialog.setCancelable(true);
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(text);
+        mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
 
@@ -47,5 +49,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+    public void logOut() {
+        LocalServices.clearLocalData(this);
+        LocalServices.isLoggedIn(this);
     }
 }

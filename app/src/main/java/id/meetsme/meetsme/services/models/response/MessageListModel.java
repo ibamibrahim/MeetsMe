@@ -1,4 +1,4 @@
-package id.meetsme.meetsme.services.models;
+package id.meetsme.meetsme.services.models.response;
 
 /**
  * Created by Ibam on 8/31/2017.

@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.BaseFragment;
 import id.meetsme.meetsme.R;
-import id.meetsme.meetsme.services.models.MessageListModel;
+import id.meetsme.meetsme.services.models.response.MessageListModel;
 
 /**
  * Created by Ibam on 8/31/2017.
