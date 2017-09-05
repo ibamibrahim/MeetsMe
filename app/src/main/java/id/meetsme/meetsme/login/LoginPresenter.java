@@ -60,7 +60,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                             e.printStackTrace();
                         }
 
-                        if(loginResponse.getUser() != null){
+                        if(loginResponse != null){
                             mView.loginStatus(true, "Succesfully login!", loginResponse);
                             saveTokenAndUsername(loginResponse.getToken(), loginResponse.getUser
                                     ().getUsername(), context);

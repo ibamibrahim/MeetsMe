@@ -44,6 +44,8 @@
         android:textColor="@color/colorPrimaryDark"/>
 
     <EditText
+        android:focusable="false"
+        android:id="@+id/create_birthday"
         style="@style/edit_text"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
@@ -78,17 +80,21 @@
             android:text="female"/>
     </RadioGroup>
 
-    <Spinner
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
-
     <EditText
         style="@style/edit_text"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_white_primary"
-        android:hint="Your interests.."
+        android:hint="Your occupation"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/create_interest"
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="Your interests"
         android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
@@ -106,5 +112,6 @@
         android:background="@drawable/button_primary_none"
         android:text="Join Now!"
         />
+
 
 </LinearLayout>

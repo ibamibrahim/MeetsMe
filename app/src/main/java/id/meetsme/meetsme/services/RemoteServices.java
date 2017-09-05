@@ -1,7 +1,9 @@
 package id.meetsme.meetsme.services;
 
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
+import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
+import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -17,9 +19,17 @@ public class RemoteServices implements ServicesContract.Remote {
     private final String BASE_URL = "https://meetme-gemastik.herokuapp.com/api/v1/";
     private MeetsMeAPIServices retrofit;
 
-    public Observable<Response<LoginResponseModel>> login(String email, String password){
+    public Observable<Response<LoginResponseModel>> login(String email, String password) {
         initRetrofit();
         return retrofit.login(new LoginRequestModel(email, password));
+    }
+
+    public Observable<Response<RegisterResponseModel>> register(String username, String email,
+                                                                String password, String fullName) {
+
+        initRetrofit();
+        return retrofit.register(new RegisterRequestModel(username, email, password, fullName,
+                null));
     }
 
 
