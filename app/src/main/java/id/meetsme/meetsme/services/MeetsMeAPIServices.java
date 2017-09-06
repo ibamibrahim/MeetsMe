@@ -1,12 +1,16 @@
 package id.meetsme.meetsme.services;
 
+import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
+import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
@@ -20,4 +24,9 @@ public interface MeetsMeAPIServices {
 
     @POST("/api/v1/account/register/")
     Observable<Response<RegisterResponseModel>> register(@Body RegisterRequestModel data);
+
+    @POST("/api/v1/accout/user/{id}")
+    Observable<Response<EditProfResponseModel>> createProf(@Header("Authorization") String token,
+                                                           @Path("id") int id, @Body
+                                                           CreateProfileRequestModel model);
 }

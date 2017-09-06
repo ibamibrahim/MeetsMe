@@ -3,7 +3,6 @@ package id.meetsme.meetsme.services;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import id.meetsme.meetsme.login.LoginActivity;
 
@@ -15,8 +14,9 @@ public class LocalServices {
 
     private static String appName = "id.meetsme.meetsme";
     private static String SHARED_PREF_NAME = appName;
-    private static String TOKEN_SAVE_KEY = appName+".token";
-    private static String USERNAME_SAVE_KEY = appName+".username";
+    private static String TOKEN_SAVE_KEY = appName + ".token";
+    private static String USERNAME_SAVE_KEY = appName + ".username";
+    private static String USERID_SAVE_KEY = appName + ".userid";
 
     public static String getUsername(Context context) {
         SharedPreferences sharedPrefs = context.getSharedPreferences(SHARED_PREF_NAME, Context
@@ -24,6 +24,15 @@ public class LocalServices {
         String username = sharedPrefs.getString(USERNAME_SAVE_KEY, null);
         return username;
     }
+
+    public static int getUserId(Context context) {
+        SharedPreferences sharedPrefs = context.getSharedPreferences(SHARED_PREF_NAME, Context
+                .MODE_PRIVATE);
+        String temp = sharedPrefs.getString(USERID_SAVE_KEY, null);
+        int userId = Integer.parseInt(temp);
+        return userId;
+    }
+
 
     public static String getToken(Context context) {
         SharedPreferences sharedPrefs = context.getSharedPreferences(SHARED_PREF_NAME, Context
@@ -65,6 +74,16 @@ public class LocalServices {
         editor.commit();
         //Toast.makeText(context, "Username saved", Toast.LENGTH_SHORT).show();
     }
+
+    public static void saveUserId(Context context, String newUserId) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USERID_SAVE_KEY, newUserId);
+        editor.commit();
+        //Toast.makeText(context, "Username saved", Toast.LENGTH_SHORT).show();
+    }
+
 
     public static void clearLocalData(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME,

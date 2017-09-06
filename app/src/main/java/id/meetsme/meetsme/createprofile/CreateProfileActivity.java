@@ -1,8 +1,6 @@
 package id.meetsme.meetsme.createprofile;
 
 import android.app.DatePickerDialog;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -10,8 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -36,6 +38,15 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     @BindView(R.id.create_birthday)
     EditText inputBirthday;
 
+    @BindView(R.id.create_city)
+    EditText inputCity;
+
+    @BindView(R.id.create_occup)
+    EditText inputOccup;
+
+    @BindView(R.id.create_sex)
+    RadioGroup inputSex;
+
     Calendar myCalendar;
 
 
@@ -46,8 +57,15 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
 
         ButterKnife.bind(this);
         myCalendar = Calendar.getInstance();
+
+        initPresenter();
         initInterest();
         initDatePicker();
+    }
+
+    private void initPresenter(){
+        mPresenter = new CreateProfilePresenter();
+        mPresenter.setView(this);
     }
 
     private void initInterest() {
@@ -59,7 +77,8 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     }
 
     private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        //String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         inputBirthday.setText(sdf.format(myCalendar.getTime()));
@@ -95,7 +114,20 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
 
     @OnClick(R.id.join_now_button)
     public void joinNow() {
-        showToast(inputInterest.getText().toString());
+        int selectedSex = inputSex.getCheckedRadioButtonId();
+        RadioButton selected = (RadioButton) findViewById(selectedSex);
+
+        String occupation = inputOccup.getText().toString();
+        String birthday = inputBirthday.getText().toString();
+        String interest = inputInterest.getText().toString();
+        String sex = selected.getText().toString();
+
+        createProfile(sex, occupation, interest, birthday);
+    }
+
+    private void createProfile(String sex, String occup, String interest, String birthday) {
+        showProgressDialog("Loading...");
+        mPresenter.createProfile(sex, occup, interest, birthday, getApplicationContext());
     }
 
     @Override

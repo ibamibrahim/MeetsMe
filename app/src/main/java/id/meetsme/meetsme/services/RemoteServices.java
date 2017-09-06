@@ -1,7 +1,9 @@
 package id.meetsme.meetsme.services;
 
+import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
+import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 import retrofit2.Response;
@@ -30,6 +32,14 @@ public class RemoteServices implements ServicesContract.Remote {
         initRetrofit();
         return retrofit.register(new RegisterRequestModel(username, email, password, fullName,
                 null));
+    }
+
+    public Observable<Response<EditProfResponseModel>> createProfile(String token, int userId,
+                                                                     String sex, String
+                                                                             occupation, String user_interest, String birth_date) {
+        initRetrofit();
+        return retrofit.createProf(token, userId, new CreateProfileRequestModel(sex, occupation,
+                user_interest, birth_date));
     }
 
 
