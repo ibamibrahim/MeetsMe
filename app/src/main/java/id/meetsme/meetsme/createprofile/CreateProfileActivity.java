@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.thomashaertel.widget.MultiSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 
 /**
  * Created by Ibam on 8/28/2017.
@@ -33,7 +35,7 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     TextView joinNowButton;
 
     @BindView(R.id.create_interest)
-    MultiAutoCompleteTextView inputInterest;
+    MultiSpinner inputInterest;
 
     @BindView(R.id.create_birthday)
     EditText inputBirthday;
@@ -47,6 +49,7 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     @BindView(R.id.create_sex)
     RadioGroup inputSex;
 
+    SpinnerOnClickListener listener;
     Calendar myCalendar;
 
 
@@ -63,17 +66,21 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
         initDatePicker();
     }
 
-    private void initPresenter(){
+    private void initPresenter() {
         mPresenter = new CreateProfilePresenter();
         mPresenter.setView(this);
     }
 
     private void initInterest() {
         String[] androidVersionNames = {"Aestro", "Blender", "CupCake", "Donut", "Eclair", "Froyo", "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellibean", "Kitkat", "Lollipop", "MarshMallow"};
-        ArrayAdapter<String> versionNames = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, androidVersionNames);
-        inputInterest.setAdapter(versionNames);
-        inputInterest.setThreshold(1);
-        inputInterest.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        ArrayAdapter<String> adapter = initAdapter();
+        inputInterest.setAdapter(adapter, false, listener);
+    }
+
+    private ArrayAdapter<String> initAdapter() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        adapter.addAll("Football", "Taekwondo", "Formula One", "Basketball", "Badminton", "Teaching", "Education", "Environment", "Renewable", "Energy", "Artificial Intelligence", "Public Speaking", "Politic");
+        return adapter;
     }
 
     private void updateLabel() {
@@ -119,10 +126,19 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
 
         String occupation = inputOccup.getText().toString();
         String birthday = inputBirthday.getText().toString();
-        String interest = inputInterest.getText().toString();
-        String sex = selected.getText().toString();
-
-        createProfile(sex, occupation, interest, birthday);
+        String interest = listener.getSelected();
+        String sex;
+        try {
+            sex = selected.getText().toString();
+            if (occupation.equals("") || birthday.equals("") || interest.equals("") || sex.equals("")) {
+                showToast("all must set");
+            } else {
+                //showToast(occupation + " " + birthday + " " + interest + " " + sex);
+                createProfile(sex, occupation, interest, birthday);
+            }
+        } catch (NullPointerException e) {
+            showToast("all must set");
+        }
     }
 
     private void createProfile(String sex, String occup, String interest, String birthday) {
@@ -131,7 +147,34 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     }
 
     @Override
+    public void createProfileStatus(boolean status, String message, EditProfResponseModel model) {
+        hideDialog();
+        showToast(message);
+    }
+
+    @Override
     public void setPresenter(CreateProfileContract.Presenter presenter) {
         this.mPresenter = (CreateProfilePresenter) presenter;
+    }
+
+    private class SpinnerOnClickListener implements MultiSpinner.MultiSpinnerListener {
+
+        private String selectedStr;
+
+        @Override
+        public void onItemsSelected(boolean[] selected) {
+            selectedStr = "";
+            for (int i = 0; i < selected.length; i++) {
+                if (selected[i]) {
+                    selectedStr = selectedStr + i + ",";
+                }
+            }
+
+            selectedStr = selectedStr.substring(0, selectedStr.length() - 1);
+        }
+
+        public String getSelected() {
+            return selectedStr;
+        }
     }
 }

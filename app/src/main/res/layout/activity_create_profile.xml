@@ -26,8 +26,8 @@
         android:textColor="@color/colorPrimaryDark"/>
 
     <EditText
-        style="@style/edit_text"
         android:id="@+id/create_city"
+        style="@style/edit_text"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:background="@drawable/input_white_primary"
@@ -80,9 +80,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/input_white_primary"
         android:hint="Your occupation"
+        android:singleLine="true"
         android:textColor="@color/colorPrimaryDark"/>
 
-    <MultiAutoCompleteTextView
+    <com.thomashaertel.widget.MultiSpinner
         android:id="@+id/create_interest"
         style="@style/edit_text"
         android:layout_width="270dp"
@@ -90,6 +91,15 @@
         android:background="@drawable/input_white_primary"
         android:hint="Your interests"
         android:textColor="@color/colorPrimaryDark"/>
+
+    <MultiAutoCompleteTextView
+        style="@style/edit_text"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_white_primary"
+        android:hint="Your interests"
+        android:textColor="@color/colorPrimaryDark"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="270dp"

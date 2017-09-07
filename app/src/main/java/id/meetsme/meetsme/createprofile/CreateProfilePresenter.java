@@ -3,8 +3,6 @@ package id.meetsme.meetsme.createprofile;
 import android.content.Context;
 import android.util.Log;
 
-import java.io.IOException;
-
 import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.RemoteServices;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
@@ -32,11 +30,11 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
     }
 
     @Override
-    public void createProfile(String sex, String occup, String interest, String birthday, Context context) {
-        String token = LocalServices.getToken(context);
-        int userId = LocalServices.getUserId(context);
+    public void createProfile(String sex, String occup, final String interest, String birthday, Context context) {
+        final String token = LocalServices.getToken(context);
+        final int userId = LocalServices.getUserId(context);
 
-        RemoteServices remoteServices = new RemoteServices();
+        final RemoteServices remoteServices = new RemoteServices();
 
         remoteServices.createProfile(token, userId, sex, occup, interest, birthday)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -54,26 +52,26 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
 
                     @Override
                     public void onNext(Response<EditProfResponseModel> response) {
-                        EditProfResponseModel editResponse = response.body();
 
-                        // if failed
-                        try {
-                            Log.d("RegisterPresenter", response.isSuccessful() + " " + response
-                                    .errorBody().string());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            mView.createProfileStatus(false, e.getMessage().toString(), null);
-                        }
+                        remoteServices.addInterest(token, userId, interest).observeOn(AndroidSchedulers.mainThread())
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(new Subscriber<Response<String>>() {
+                                    @Override
+                                    public void onCompleted() {
 
-                        if (editResponse != null) {
-                            mView.createProfileStatus(true, "Succesfully registered!", editResponse);
-                        } else {
-                            try {
-                                mView.createProfileStatus(false, response.errorBody().string(), null);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        mView.createProfileStatus(false, e.getMessage(), null);
+                                    }
+
+                                    @Override
+                                    public void onNext(Response<String> stringResponse) {
+                                        mView.createProfileStatus(true, "Succesfully " +
+                                                "registered!", null);
+                                    }
+                                });
                     }
                 });
 

@@ -1,5 +1,6 @@
 package id.meetsme.meetsme.services;
 
+import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
@@ -40,6 +41,12 @@ public class RemoteServices implements ServicesContract.Remote {
         initRetrofit();
         return retrofit.createProf(token, userId, new CreateProfileRequestModel(sex, occupation,
                 user_interest, birth_date));
+    }
+
+    public Observable<Response<String>> addInterest(String token, int userId, String interest) {
+        initRetrofit();
+        String tempToken = token.replaceAll("JWT ", "");
+        return retrofit.addInterest(token, new AddInterestRequestModel(tempToken, userId + "", interest));
     }
 
 

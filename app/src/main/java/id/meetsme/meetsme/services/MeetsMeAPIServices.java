@@ -1,5 +1,6 @@
 package id.meetsme.meetsme.services;
 
+import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
@@ -25,8 +26,12 @@ public interface MeetsMeAPIServices {
     @POST("/api/v1/account/register/")
     Observable<Response<RegisterResponseModel>> register(@Body RegisterRequestModel data);
 
-    @POST("/api/v1/accout/user/{id}")
+    @POST("/api/v1/account/user/{id}")
     Observable<Response<EditProfResponseModel>> createProf(@Header("Authorization") String token,
                                                            @Path("id") int id, @Body
                                                            CreateProfileRequestModel model);
+
+    @POST("/api/v1/account/add-interest/")
+    Observable<Response<String>> addInterest(@Header("Authorization") String token, @Body
+                                             AddInterestRequestModel model);
 }

@@ -12,13 +12,15 @@
         <activity android:name=".login.LoginActivity">
 
         </activity>
-        <activity android:name=".createprofile.CreateProfileActivity"/>
-        <activity android:name=".register.RegisterActivity">
+        <activity android:name=".createprofile.CreateProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".register.RegisterActivity">
+
         </activity>
         <activity android:name=".navigationactivity.NavigationActivity">
         </activity>
