@@ -72,8 +72,8 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     }
 
     private void initInterest() {
-        String[] androidVersionNames = {"Aestro", "Blender", "CupCake", "Donut", "Eclair", "Froyo", "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellibean", "Kitkat", "Lollipop", "MarshMallow"};
         ArrayAdapter<String> adapter = initAdapter();
+        listener = new SpinnerOnClickListener();
         inputInterest.setAdapter(adapter, false, listener);
     }
 
