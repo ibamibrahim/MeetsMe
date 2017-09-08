@@ -13,17 +13,27 @@
 
         </activity>
         <activity android:name=".createprofile.CreateProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".register.RegisterActivity">
 
         </activity>
         <activity android:name=".navigationactivity.NavigationActivity">
         </activity>
+        <activity android:name=".resultactivity.ResultActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD427q1RlyOG7gIpXQ1lkc2hptnXZnf-00 "/>
+        <uses-feature
+            android:glEsVersion="0x00020000"
+            android:required="true"/>
     </application>
 
 </manifest>
