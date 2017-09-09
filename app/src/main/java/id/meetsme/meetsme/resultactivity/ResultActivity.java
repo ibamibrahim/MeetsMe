@@ -35,6 +35,7 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         initPresenter();
+        isLoggedIn();
     }
 
     public void initPresenter() {

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "483706086862",
+    "firebase_url": "https://meetsme-gemastik.firebaseio.com",
+    "project_id": "meetsme-gemastik",
+    "storage_bucket": "meetsme-gemastik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483706086862:android:fd04ffcf4f9d0a14",
+        "android_client_info": {
+          "package_name": "id.meetsme.meetsme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483706086862-fhu30j6vpo660sj40eqc6mn7kn4f16nv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.meetsme.meetsme",
+            "certificate_hash": "a5669adebb60870e9247a0eaea2c537f3227eb49"
+          }
+        },
+        {
+          "client_id": "483706086862-m7fvdflr0fisdiodt8ameblkn6t6mt48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG-cP7QVWFCMe6t6U9AwnWmvEhasG3pp0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483706086862-m7fvdflr0fisdiodt8ameblkn6t6mt48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

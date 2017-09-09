@@ -1,6 +1,7 @@
 
 package id.meetsme.meetsme.services.models.response.login;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,21 +10,45 @@ public class User {
     @SerializedName("id")
     @Expose
     private Integer id;
-    @SerializedName("username")
+    @SerializedName("user")
     @Expose
-    private String username;
-    @SerializedName("email")
+    private User_ user;
+    @SerializedName("sex")
     @Expose
-    private String email;
-    @SerializedName("first_name")
+    private String sex;
+    @SerializedName("occupation")
     @Expose
-    private String firstName;
-    @SerializedName("last_name")
+    private String occupation;
+    @SerializedName("device_token")
     @Expose
-    private String lastName;
-    @SerializedName("profile")
+    private String deviceToken;
+    @SerializedName("photo")
     @Expose
-    private Profile profile;
+    private Object photo;
+    @SerializedName("phone_number")
+    @Expose
+    private Object phoneNumber;
+    @SerializedName("location_lat")
+    @Expose
+    private String locationLat;
+    @SerializedName("location_lon")
+    @Expose
+    private String locationLon;
+    @SerializedName("user_interest")
+    @Expose
+    private List<UserInterest> userInterest = null;
+    @SerializedName("birth_place")
+    @Expose
+    private Object birthPlace;
+    @SerializedName("birth_date")
+    @Expose
+    private String birthDate;
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+    @SerializedName("updated_at")
+    @Expose
+    private String updatedAt;
 
     public Integer getId() {
         return id;
@@ -33,44 +58,108 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public User_ getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User_ user) {
+        this.user = user;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSex() {
+        return sex;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getOccupation() {
+        return occupation;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getDeviceToken() {
+        return deviceToken;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Object getPhoto() {
+        return photo;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setPhoto(Object photo) {
+        this.photo = photo;
+    }
+
+    public Object getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Object phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getLocationLat() {
+        return locationLat;
+    }
+
+    public void setLocationLat(String locationLat) {
+        this.locationLat = locationLat;
+    }
+
+    public String getLocationLon() {
+        return locationLon;
+    }
+
+    public void setLocationLon(String locationLon) {
+        this.locationLon = locationLon;
+    }
+
+    public List<UserInterest> getUserInterest() {
+        return userInterest;
+    }
+
+    public void setUserInterest(List<UserInterest> userInterest) {
+        this.userInterest = userInterest;
+    }
+
+    public Object getBirthPlace() {
+        return birthPlace;
+    }
+
+    public void setBirthPlace(Object birthPlace) {
+        this.birthPlace = birthPlace;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

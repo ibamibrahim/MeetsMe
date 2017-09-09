@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import id.meetsme.meetsme.helper.Helper;
 import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.RemoteServices;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
@@ -56,14 +57,13 @@ public class LoginPresenter implements LoginContract.Presenter {
                         try {
                             Log.d("LoginPresenter", response.isSuccessful() + " " + response
                                     .errorBody().string());
-                        } catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
-                        if(loginResponse != null){
+                        if (loginResponse != null) {
                             mView.loginStatus(true, "Succesfully login!", loginResponse);
-                            saveTokenAndUsername(loginResponse.getToken(), loginResponse.getUser
-                                    ().getUsername(), context);
+                            saveTokenAndUserdetail(loginResponse.getToken(), loginResponse, context);
                         } else {
                             try {
                                 mView.loginStatus(false, response.errorBody().string(), null);
@@ -75,10 +75,11 @@ public class LoginPresenter implements LoginContract.Presenter {
                 });
     }
 
-    private void saveTokenAndUsername(String token, String username, Context context){
+    private void saveTokenAndUserdetail(String token, LoginResponseModel userdetail, Context context) {
         token = "JWT " + token;
         LocalServices.saveToken(context, token);
-        LocalServices.saveUsername(context, username);
+        String userDetailString = Helper.objectToJson(userdetail);
+        LocalServices.saveUserDetail(context, userDetailString);
         Log.d("LoginPresenter", token);
     }
 }

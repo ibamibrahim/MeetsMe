@@ -20,6 +20,9 @@ android {
 
     packagingOptions{
         exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
     }
 }
 
@@ -75,3 +78,5 @@ dependencies {
     compile 'com.thomashaertel:multispinner:0.1.1@aar'
 
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -16,6 +16,8 @@ import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
 import id.meetsme.meetsme.createprofile.CreateProfileActivity;
 import id.meetsme.meetsme.login.LoginActivity;
+import id.meetsme.meetsme.navigationactivity.NavigationActivity;
+import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 
 /**
@@ -52,13 +54,23 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
         ButterKnife.bind(this);
 
+        isLogIn();
         initPresenter();
         initDummyData();
 
     }
 
+    private void isLogIn() {
+        String userDetail = LocalServices.getUserDetail(getApplicationContext());
+        if (userDetail != null) {
+            Intent intent = new Intent(this, NavigationActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     private void initDummyData() {
-        inputEmail.setText(randomString(4) + "@gmail.com");
+        inputEmail.setText("ibrahim52@ui.ac.id");
         inputName.setText(randomString(8));
         inputPassword.setText("ibamibamkeren");
         inputUsername.setText(randomString(6));

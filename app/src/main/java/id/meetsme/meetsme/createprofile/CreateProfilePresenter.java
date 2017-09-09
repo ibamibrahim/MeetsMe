@@ -1,10 +1,13 @@
 package id.meetsme.meetsme.createprofile;
 
 import android.content.Context;
-import android.util.Log;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.RemoteServices;
+import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import retrofit2.Response;
 import rx.Subscriber;
@@ -21,7 +24,7 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
 
     @Override
     public void setView(Object view) {
-        this.mView = (CreateProfileContract.View) mView;
+        this.mView = (CreateProfileContract.View) view;
     }
 
     @Override
@@ -33,10 +36,11 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
     public void createProfile(String sex, String occup, final String interest, String birthday, Context context) {
         final String token = LocalServices.getToken(context);
         final int userId = LocalServices.getUserId(context);
-
+        FirebaseApp.initializeApp(context);
+        final String device_token = FirebaseInstanceId.getInstance().getToken();
         final RemoteServices remoteServices = new RemoteServices();
 
-        remoteServices.createProfile(token, userId, sex, occup, interest, birthday)
+        remoteServices.createProfile(token, userId, sex, occup, interest, birthday, device_token)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<Response<EditProfResponseModel>>() {
@@ -53,9 +57,11 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
                     @Override
                     public void onNext(Response<EditProfResponseModel> response) {
 
+                        EditProfResponseModel model = response.body();
+
                         remoteServices.addInterest(token, userId, interest).observeOn(AndroidSchedulers.mainThread())
                                 .subscribeOn(Schedulers.io())
-                                .subscribe(new Subscriber<Response<String>>() {
+                                .subscribe(new Subscriber<Response<AddUserInterestResponse>>() {
                                     @Override
                                     public void onCompleted() {
 
@@ -67,7 +73,7 @@ public class CreateProfilePresenter implements CreateProfileContract.Presenter {
                                     }
 
                                     @Override
-                                    public void onNext(Response<String> stringResponse) {
+                                    public void onNext(Response<AddUserInterestResponse> stringResponse) {
                                         mView.createProfileStatus(true, "Succesfully " +
                                                 "registered!", null);
                                     }

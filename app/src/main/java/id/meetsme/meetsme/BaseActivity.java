@@ -2,6 +2,7 @@ package id.meetsme.meetsme;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import id.meetsme.meetsme.register.RegisterActivity;
 import id.meetsme.meetsme.services.LocalServices;
 
 /**
@@ -50,6 +52,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    public void isLoggedIn() {
+        String userDetail = LocalServices.getUserDetail(getApplicationContext());
+        if (userDetail.equals("")) {
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     public void logOut() {
         LocalServices.clearLocalData(this);
         LocalServices.isLoggedIn(this);

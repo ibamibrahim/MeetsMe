@@ -16,17 +16,30 @@
 
         </activity>
         <activity android:name=".register.RegisterActivity">
-
-        </activity>
-        <activity android:name=".navigationactivity.NavigationActivity">
-        </activity>
-        <activity android:name=".resultactivity.ResultActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".navigationactivity.NavigationActivity">
+        </activity>
+        <activity android:name=".resultactivity.ResultActivity">
+
+        </activity>
+
+        <service
+            android:name=".services.firebase.FirebaseMsgService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.firebase.FirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

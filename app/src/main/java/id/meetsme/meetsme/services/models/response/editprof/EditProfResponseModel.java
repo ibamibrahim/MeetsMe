@@ -19,6 +19,9 @@ public class EditProfResponseModel {
     @SerializedName("occupation")
     @Expose
     private String occupation;
+    @SerializedName("device_token")
+    @Expose
+    private String deviceToken;
     @SerializedName("photo")
     @Expose
     private Object photo;
@@ -27,19 +30,19 @@ public class EditProfResponseModel {
     private Object phoneNumber;
     @SerializedName("location_lat")
     @Expose
-    private Object locationLat;
+    private String locationLat;
     @SerializedName("location_lon")
     @Expose
-    private Object locationLon;
+    private String locationLon;
     @SerializedName("user_interest")
     @Expose
-    private List<Object> userInterest = null;
+    private List<UserInterest> userInterest = null;
     @SerializedName("birth_place")
     @Expose
     private Object birthPlace;
     @SerializedName("birth_date")
     @Expose
-    private Object birthDate;
+    private String birthDate;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -79,6 +82,14 @@ public class EditProfResponseModel {
         this.occupation = occupation;
     }
 
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
+
     public Object getPhoto() {
         return photo;
     }
@@ -95,27 +106,27 @@ public class EditProfResponseModel {
         this.phoneNumber = phoneNumber;
     }
 
-    public Object getLocationLat() {
+    public String getLocationLat() {
         return locationLat;
     }
 
-    public void setLocationLat(Object locationLat) {
+    public void setLocationLat(String locationLat) {
         this.locationLat = locationLat;
     }
 
-    public Object getLocationLon() {
+    public String getLocationLon() {
         return locationLon;
     }
 
-    public void setLocationLon(Object locationLon) {
+    public void setLocationLon(String locationLon) {
         this.locationLon = locationLon;
     }
 
-    public List<Object> getUserInterest() {
+    public List<UserInterest> getUserInterest() {
         return userInterest;
     }
 
-    public void setUserInterest(List<Object> userInterest) {
+    public void setUserInterest(List<UserInterest> userInterest) {
         this.userInterest = userInterest;
     }
 
@@ -127,11 +138,11 @@ public class EditProfResponseModel {
         this.birthPlace = birthPlace;
     }
 
-    public Object getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Object birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

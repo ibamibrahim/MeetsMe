@@ -4,6 +4,7 @@ import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
+import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
@@ -37,13 +38,16 @@ public class RemoteServices implements ServicesContract.Remote {
 
     public Observable<Response<EditProfResponseModel>> createProfile(String token, int userId,
                                                                      String sex, String
-                                                                             occupation, String user_interest, String birth_date) {
+                                                                             occupation, String
+                                                                             user_interest,
+                                                                     String birth_date, String
+                                                                             device_token) {
         initRetrofit();
         return retrofit.createProf(token, userId, new CreateProfileRequestModel(sex, occupation,
-                user_interest, birth_date));
+                user_interest, birth_date, device_token));
     }
 
-    public Observable<Response<String>> addInterest(String token, int userId, String interest) {
+    public Observable<Response<AddUserInterestResponse>> addInterest(String token, int userId, String interest) {
         initRetrofit();
         String tempToken = token.replaceAll("JWT ", "");
         return retrofit.addInterest(token, new AddInterestRequestModel(tempToken, userId + "", interest));

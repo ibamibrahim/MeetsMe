@@ -1,5 +1,7 @@
 package id.meetsme.meetsme.myprofile;
 
+import android.content.Context;
+
 import java.util.List;
 
 import id.meetsme.meetsme.BasePresenter;
@@ -13,9 +15,10 @@ public interface MyProfileContract {
 
     interface View extends BaseView<Presenter> {
         void updateInterestList(List<String> list);
+        void updateProfile(String a, String b, String c);
     }
 
     interface Presenter extends BasePresenter {
-        void loadInterests();
+        void loadUserDetail(Context context);
     }
 }

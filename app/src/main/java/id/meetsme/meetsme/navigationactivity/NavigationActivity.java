@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -14,15 +15,26 @@ import id.meetsme.meetsme.R;
 import id.meetsme.meetsme.main.MainActivity;
 import id.meetsme.meetsme.messagelist.MessageListActivity;
 import id.meetsme.meetsme.myprofile.MyProfileActivity;
+import id.meetsme.meetsme.services.LocalServices;
 
 public class NavigationActivity extends BaseActivity {
+
+    private static final String TAG = "NavigationActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+        isLoggedIn();
         initUI();
+        logDetail();
+    }
 
+    private void logDetail() {
+        Log.i(TAG, "token: " + LocalServices.getToken(getApplicationContext()));
+        Log.i(TAG, "userdetail: " + LocalServices.getUserDetail(getApplicationContext()));
+        Log.i(TAG, "userId: " + LocalServices.getUserId(getApplicationContext()));
+        Log.i(TAG, "userInterest: " + LocalServices.getUserInterest(getApplicationContext()));
     }
 
     private void initUI() {

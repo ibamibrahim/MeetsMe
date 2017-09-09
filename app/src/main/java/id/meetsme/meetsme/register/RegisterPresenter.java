@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.RemoteServices;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 import retrofit2.Response;
@@ -18,6 +19,7 @@ import rx.schedulers.Schedulers;
 
 public class RegisterPresenter implements RegisterContract.Presenter {
 
+    private static final String TAG = "RegisterPresenter";
     private RegisterContract.View mView;
 
     @Override
@@ -31,7 +33,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     }
 
     @Override
-    public void signUp(String username, String email, String password, String fullName, Context
+    public void signUp(String username, String email, String password, String fullName, final Context
             context) {
         RemoteServices remoteServices = new RemoteServices();
         remoteServices.register(username, email, password, fullName)
@@ -62,6 +64,8 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         }
 
                         if (registerResponse != null) {
+                            saveUserIdAndToken(registerResponse.getUser_profile_id(),
+                                    registerResponse.getToken(), context);
                             mView.signUpStatus(true, "Succesfully registered!", registerResponse);
                         } else {
                             try {
@@ -72,5 +76,12 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                         }
                     }
                 });
+    }
+
+    private void saveUserIdAndToken(String user_id, String token, Context context) {
+        token = "JWT " + token;
+        LocalServices.saveUserId(context, user_id);
+        LocalServices.saveToken(context, token);
+        Log.i(TAG, "saveUserIdAndToken: done");
     }
 }

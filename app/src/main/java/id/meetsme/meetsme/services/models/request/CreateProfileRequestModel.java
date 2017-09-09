@@ -9,12 +9,15 @@ public class CreateProfileRequestModel {
     private String occupation;
     private String user_interest;
     private String birth_date;
+    private String device_token;
 
-    public CreateProfileRequestModel(String sex, String occupation, String user_interest, String birth_date) {
+    public CreateProfileRequestModel(String sex, String occupation, String user_interest, String
+            birth_date, String device_token) {
         this.sex = sex;
         this.occupation = occupation;
         this.user_interest = user_interest;
         this.birth_date = birth_date;
+        this.device_token = device_token;
     }
 
     public String getSex() {

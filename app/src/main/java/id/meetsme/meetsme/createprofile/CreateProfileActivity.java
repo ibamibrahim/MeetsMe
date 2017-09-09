@@ -1,8 +1,10 @@
 package id.meetsme.meetsme.createprofile;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -22,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.login.LoginActivity;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 
 /**
@@ -29,29 +32,22 @@ import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseMode
  */
 
 public class CreateProfileActivity extends BaseActivity implements CreateProfileContract.View {
+    private static final String TAG = "CreateProfileActivity";
     CreateProfilePresenter mPresenter;
-
     @BindView(R.id.join_now_button)
     TextView joinNowButton;
-
     @BindView(R.id.create_interest)
     MultiSpinner inputInterest;
-
     @BindView(R.id.create_birthday)
     EditText inputBirthday;
-
     @BindView(R.id.create_city)
     EditText inputCity;
-
     @BindView(R.id.create_occup)
     EditText inputOccup;
-
     @BindView(R.id.create_sex)
     RadioGroup inputSex;
-
     SpinnerOnClickListener listener;
     Calendar myCalendar;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,6 +123,7 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
         String occupation = inputOccup.getText().toString();
         String birthday = inputBirthday.getText().toString();
         String interest = listener.getSelected();
+        Log.i(TAG, "joinNow: interest " + interest);
         String sex;
         try {
             sex = selected.getText().toString();
@@ -150,6 +147,11 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     public void createProfileStatus(boolean status, String message, EditProfResponseModel model) {
         hideDialog();
         showToast(message);
+        if (status) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
