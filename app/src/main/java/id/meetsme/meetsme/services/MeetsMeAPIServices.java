@@ -3,8 +3,10 @@ package id.meetsme.meetsme.services;
 import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
+import id.meetsme.meetsme.services.models.request.MatchMakingRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
 import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
+import id.meetsme.meetsme.services.models.response.MatchMakingResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
@@ -31,9 +33,13 @@ public interface MeetsMeAPIServices {
     @PUT("/api/v1/account/user/{id}")
     Observable<Response<EditProfResponseModel>> createProf(@Header("Authorization") String token,
                                                            @Path("id") int id, @Body
-                                                           CreateProfileRequestModel model);
+                                                                   CreateProfileRequestModel model);
 
     @POST("/api/v1/account/add-interest/")
     Observable<Response<AddUserInterestResponse>> addInterest(@Header("Authorization") String token, @Body
-                                             AddInterestRequestModel model);
+            AddInterestRequestModel model);
+
+    @POST("/api/v1/matchmaking/matchmaking-engine/")
+    Observable<Response<MatchMakingResponse>> matchMaking(@Header("Authorization") String token,
+                                                          @Body MatchMakingRequestModel model);
 }

@@ -3,8 +3,10 @@ package id.meetsme.meetsme.services;
 import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
+import id.meetsme.meetsme.services.models.request.MatchMakingRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
 import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
+import id.meetsme.meetsme.services.models.response.MatchMakingResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
@@ -51,6 +53,15 @@ public class RemoteServices implements ServicesContract.Remote {
         initRetrofit();
         String tempToken = token.replaceAll("JWT ", "");
         return retrofit.addInterest(token, new AddInterestRequestModel(tempToken, userId + "", interest));
+    }
+
+    public Observable<Response<MatchMakingResponse>> matchMaking(String token, String user,
+                                                                 String interest, double lat,
+                                                                 double longitude) {
+        initRetrofit();
+        String tempTOken = token.replaceAll("JWT ", "");
+        return retrofit.matchMaking(token, new MatchMakingRequestModel(tempTOken, user, interest,
+                lat, longitude));
     }
 
 

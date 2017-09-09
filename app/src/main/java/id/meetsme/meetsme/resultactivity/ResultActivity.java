@@ -1,8 +1,10 @@
 package id.meetsme.meetsme.resultactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.google.android.gms.cast.framework.internal.featurehighlight.HelpTextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -15,7 +17,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.helper.Helper;
 import id.meetsme.meetsme.services.models.response.DummyResultModel;
+import id.meetsme.meetsme.services.models.response.MatchMakingResponse;
 
 /**
  * Created by Ibam on 8/28/2017.
@@ -25,6 +29,7 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
     private static final String TAG = "ResultActivity";
     ResultPresenter mPresenter;
     MapFragment mapFragment;
+    MatchMakingResponse response;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +40,14 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         initPresenter();
+        getMatchmakingIntent();
         isLoggedIn();
+    }
+
+    private void getMatchmakingIntent() {
+        Intent intent = getIntent();
+        String resultJson = intent.getStringExtra("result");
+        response = Helper.jsonToObject(resultJson, MatchMakingResponse.class);
     }
 
     public void initPresenter() {
