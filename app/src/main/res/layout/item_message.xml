@@ -3,48 +3,27 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:padding="4dp">
+              android:padding="8dp">
 
     <TextView
-        android:id="@+id/chat_date"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:paddingLeft="48dp"
-        android:paddingRight="48dp"
-        android:layout_width="wrap_content"
+        android:id="@+id/sender"
+        style="@style/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/item_chat_date"
-        android:text="Today"
-        android:textColor="@color/white_text"/>
+        android:layout_marginTop="2dp"
+        android:text="Adam Sandler:"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/content"
+        style="@style/sub_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingBottom="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="12dp"
-        android:paddingTop="4dp"
-        android:text="Lorem ipsum ausdhadh uadhsu dausaidhaui "/>
+        android:layout_marginTop="4dp"
+        android:paddingLeft="16dp"
+        android:text="Hey whatsapp!"
+        android:textColor="#000"
+        android:textStyle="normal"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Read"
-            android:textSize="10sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10.24"
-            android:textSize="10sp"/>
-
-    </LinearLayout>
 </LinearLayout>
