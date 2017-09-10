@@ -56,7 +56,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
 
         isLogIn();
         initPresenter();
-        initDummyData();
+        //initDummyData();
 
     }
 

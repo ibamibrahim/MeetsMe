@@ -128,13 +128,13 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
         try {
             sex = selected.getText().toString();
             if (occupation.equals("") || birthday.equals("") || interest.equals("") || sex.equals("")) {
-                showToast("all must set");
+                showToast("All field must be filled!");
             } else {
                 //showToast(occupation + " " + birthday + " " + interest + " " + sex);
                 createProfile(sex, occupation, interest, birthday);
             }
         } catch (NullPointerException e) {
-            showToast("all must set");
+            showToast("All field must be filled!");
         }
     }
 
