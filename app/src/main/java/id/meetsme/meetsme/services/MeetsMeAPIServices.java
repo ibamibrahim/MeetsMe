@@ -5,7 +5,9 @@ import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.MatchMakingRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
+import id.meetsme.meetsme.services.models.request.SendMessageRequestModel;
 import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
+import id.meetsme.meetsme.services.models.response.ChatIncomingModel;
 import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
@@ -42,4 +44,8 @@ public interface MeetsMeAPIServices {
     @POST("/api/v1/matchmaking/matchmaking-engine/")
     Observable<Response<MatchMakingResponse>> matchMaking(@Header("Authorization") String token,
                                                           @Body MatchMakingRequestModel model);
+
+    @POST("/api/v1/messaging/send/")
+    Observable<Response<ChatIncomingModel>> sendMessage(@Header("Authorization") String token,
+                                                        @Body SendMessageRequestModel model);
 }

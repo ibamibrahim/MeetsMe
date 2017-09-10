@@ -14,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.R;
 import id.meetsme.meetsme.services.models.chat.MessageModel;
+import io.realm.Realm;
 
 /**
  * Created by Ibam on 9/10/2017.
@@ -54,6 +55,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     public void setDataSet(List<MessageModel> dataSet) {
         this.dataSet = dataSet;
+    }
+
+    public void addData(MessageModel newMessage){
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        dataSet.add(newMessage);
+        realm.commitTransaction();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

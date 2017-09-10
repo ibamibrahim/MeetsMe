@@ -16,13 +16,12 @@ import io.realm.RealmResults;
 
 public class RealmServices {
 
-    public static boolean createChatRoom(int user_id, String username, String lastMessage, Context
-            context) {
+    public static boolean createChatRoom(int user_id, String username, String lastMessage) {
         Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
         // check if chat is not exist
         ChatModel chatRoom = realm.where(ChatModel.class).equalTo("user_id", user_id).findFirst();
         if (chatRoom == null) {
-            realm.beginTransaction();
             ChatModel newChatRoom = realm.createObject(ChatModel.class);
             newChatRoom.setLastMessage(lastMessage);
             newChatRoom.setLastTimStamp("");
@@ -31,18 +30,18 @@ public class RealmServices {
             realm.commitTransaction();
             return true;
         }
-
+        realm.commitTransaction();
         return false;
     }
 
-    public static void createMessage(int user_id, String sender, String content, Context context) {
+    public static void createMessage(int user_id, String sender, String content) {
 
         Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
         MessageModel newMessage = realm.createObject(MessageModel.class);
         newMessage.setContent(content);
         newMessage.setSender(sender);
 
-        realm.beginTransaction();
         ChatModel chatRoom = realm.where(ChatModel.class).equalTo("user_id", user_id).findFirst();
         chatRoom.getMessages().add(newMessage);
         realm.commitTransaction();

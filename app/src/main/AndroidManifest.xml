@@ -32,6 +32,7 @@
         <activity android:name=".resultactivity.ResultActivity">
 
         </activity>
+        <activity android:name=".chat.ChatActivity"/>
 
         <service
             android:name=".services.firebase.FirebaseMsgService">
@@ -49,9 +50,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD427q1RlyOG7gIpXQ1lkc2hptnXZnf-00 "/>
-        <uses-feature
-            android:glEsVersion="0x00020000"
-            android:required="true"/>
-    </application>
 
+    </application>
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
 </manifest>

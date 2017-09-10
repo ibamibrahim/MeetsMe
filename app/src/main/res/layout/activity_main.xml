@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/main_activity_slogan_2"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:visibility="gone"/>
 
     <TextView
         style="@style/big_button"
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_primary_white"
-        android:text="@string/main_activity_button"/>
+        android:text="@string/main_activity_button"
+        android:visibility="gone"/>
 
 </LinearLayout>

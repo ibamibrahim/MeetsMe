@@ -5,10 +5,12 @@ import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.MatchMakingRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
+import id.meetsme.meetsme.services.models.request.SendMessageRequestModel;
 import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
-import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
+import id.meetsme.meetsme.services.models.response.ChatIncomingModel;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
+import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -64,6 +66,13 @@ public class RemoteServices implements ServicesContract.Remote {
                 lat, longitude));
     }
 
+    public Observable<Response<ChatIncomingModel>> sendChat(String token, String user_id, String
+            recipient, String message) {
+        initRetrofit();
+        String tempTOken = token.replaceAll("JWT ", "");
+        return retrofit.sendMessage(token, new SendMessageRequestModel(user_id, recipient,
+                message, tempTOken));
+    }
 
     private void initRetrofit() {
         this.retrofit = getRetrofit(BASE_URL);

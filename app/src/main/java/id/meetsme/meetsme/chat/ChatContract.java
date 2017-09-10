@@ -16,9 +16,11 @@ public interface ChatContract {
 
     interface View extends BaseView<Presenter> {
         void updateMessage(List<MessageModel> modelList);
+        void notifyAdapter();
     }
 
     interface Presenter extends BasePresenter {
+        void sendMessage(int sender_id, int recipient_id, String message, Context context);
         void loadMessage(Context context, int user_id);
     }
 }

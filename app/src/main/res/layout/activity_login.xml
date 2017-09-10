@@ -71,7 +71,8 @@
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <View
                 android:layout_width="match_parent"
@@ -103,7 +104,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_fb_none"
             android:text="Sign In With Facebook"
-            android:textColor="@color/white_text"/>
+            android:textColor="@color/white_text"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </RelativeLayout>

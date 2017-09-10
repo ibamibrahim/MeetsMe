@@ -177,14 +177,15 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
     @Override
     public void onInfoWindowClick(Marker marker) {
         MapsModel model = (MapsModel) marker.getTag();
-        showToast(model.getId() + "");
-        RealmServices.createChatRoom(model.getId(), model.getName(), "test",
-                getApplicationContext());
-        Intent intent = new Intent(this, ChatActivity.class);
-        intent.putExtra("user_id", model.getId());
-        intent.putExtra("name", model.getName());
-        intent.putExtra("occupation", model.getOccupation());
-        startActivity(intent);
+        if (model != null) {
+            showToast(model.getId() + "");
+            RealmServices.createChatRoom(model.getId(), model.getName(), "test");
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("user_id", model.getId());
+            intent.putExtra("name", model.getName());
+            intent.putExtra("occupation", model.getOccupation());
+            startActivity(intent);
+        }
     }
 
     @Override

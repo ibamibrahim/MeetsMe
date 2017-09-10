@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/chat_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/chat_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -48,16 +48,10 @@
                     android:text="Software Engineer at Traveloka"/>
             </LinearLayout>
         </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/chat_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/chat_header"/>
-
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/bingungIdnyaApa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -65,14 +59,15 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/chat_input"
             style="@style/edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:layout_weight=".5"
-            android:id="@+id/chat_input"
             android:background="@drawable/input_white_primary"
-            android:hint="Answer..."/>
+            android:hint="Answer..."
+            android:textColor="@color/colorPrimaryDark"/>
 
         <ImageView
             android:id="@+id/chat_send"
@@ -85,4 +80,13 @@
             android:paddingRight="8dp"
             android:src="@mipmap/ic_send"/>
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chat_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bingungIdnyaApa"
+        android:layout_below="@id/chat_header"/>
+
+
 </RelativeLayout>
