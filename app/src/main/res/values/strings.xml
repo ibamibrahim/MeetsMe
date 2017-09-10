@@ -16,6 +16,7 @@
     <string name="main_activity_button">Match people automatically</string>
     <string name="message_notes">Notes: Your chat with another user will be deleted after one hour</string>
     <string name="edit_profile_button">Log out</string>
+    <string name="result">Tap the marker for more information</string>
     <string-array name="anonymous_name">
         <item>Anonymous Cat</item>
         <item>Anonymous Turtle</item>

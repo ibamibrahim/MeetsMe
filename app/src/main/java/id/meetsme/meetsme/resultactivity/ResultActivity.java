@@ -1,9 +1,15 @@
 package id.meetsme.meetsme.resultactivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -30,7 +37,8 @@ import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingRespon
  * Created by Ibam on 8/28/2017.
  */
 
-public class ResultActivity extends BaseActivity implements ResultContract.View, OnMapReadyCallback {
+public class ResultActivity extends BaseActivity implements ResultContract.View,
+        OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private static final String TAG = "ResultActivity";
     ResultPresenter mPresenter;
     MapFragment mapFragment;
@@ -148,23 +156,60 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
             if (model.getLat() != null) {
                 double lat = Double.parseDouble(model.getLat());
                 double lon = Double.parseDouble(model.getLon());
-                map.addMarker(new MarkerOptions()
+                Marker marker = map.addMarker(new MarkerOptions()
                         .position(new LatLng(lat, lon))
                         .title(model.getName())
-                        .snippet("Occupation: " + model.getOccupation() + ". You can talk about " +
+                        .snippet("A " + model.getOccupation() + "." + "\n" + "He/She love " +
                                 model.getMatchedInterest())
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_mapsmarker)));
-
+                marker.setTag(model);
             }
         }
 
-
+        map.setInfoWindowAdapter(new CustomInfoWindow());
+        map.setOnInfoWindowClickListener(this) ;
         map.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 1000, null);
         //map.setInfoWindowAdapter(new CustomInfoWindow(this, null));
     }
 
     @Override
+    public void onInfoWindowClick(Marker marker) {
+        MapsModel model = (MapsModel) marker.getTag();
+        showToast(model.getId() + "");
+    }
+
+    @Override
     public void setPresenter(ResultContract.Presenter presenter) {
 
+    }
+
+    private class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
+
+        @Override
+        public View getInfoWindow(Marker arg0) {
+            return null;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+
+            LinearLayout info = new LinearLayout(getApplicationContext());
+            info.setOrientation(LinearLayout.VERTICAL);
+
+            TextView title = new TextView(getApplicationContext());
+            title.setTextColor(Color.BLACK);
+            title.setGravity(Gravity.CENTER);
+            title.setTypeface(null, Typeface.BOLD);
+            title.setText(marker.getTitle());
+
+            TextView snippet = new TextView(getApplicationContext());
+            snippet.setTextColor(Color.GRAY);
+            snippet.setText(marker.getSnippet());
+
+            info.addView(title);
+            info.addView(snippet);
+
+            return info;
+        }
     }
 }

@@ -8,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.services.models.MapsModel;
 import id.meetsme.meetsme.services.models.response.DummyResultModel;
 
 /**
@@ -17,9 +18,9 @@ import id.meetsme.meetsme.services.models.response.DummyResultModel;
 class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
     private final View myContentsView;
-    private DummyResultModel model;
+    private MapsModel model;
 
-    CustomInfoWindow(AppCompatActivity activity, DummyResultModel model) {
+    CustomInfoWindow(AppCompatActivity activity, MapsModel model) {
         myContentsView = activity.getLayoutInflater().inflate(R.layout.info_window_map, null);
         this.model = model;
     }
@@ -34,7 +35,7 @@ class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
         occupation.setText(model.getOccupation());
 
         TextView interest = ((TextView) myContentsView.findViewById(R.id.window_interest));
-        interest.setText(model.getInterest());
+        interest.setText(model.getMatchedInterest());
 
         return myContentsView;
     }
