@@ -72,8 +72,8 @@ public class MyProfileActivity extends BaseFragment implements MyProfileContract
         LocalServices.clearLocalData(getContext());
         Intent intent = new Intent(getContext(), RegisterActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-
     }
 
     public void initRecyclerView() {

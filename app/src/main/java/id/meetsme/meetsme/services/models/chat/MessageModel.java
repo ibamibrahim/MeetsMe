@@ -10,6 +10,9 @@ public class MessageModel extends RealmObject {
     private String sender;
     private String content;
 
+    public MessageModel() {
+    }
+
     public MessageModel(String sender, String content) {
 
         this.sender = sender;

@@ -7,11 +7,35 @@ package id.meetsme.meetsme.services.models.request;
 public class AddInterestRequestModel {
     private String token;
     private String user;
-    private String interets;
+    private String interest;
 
-    public AddInterestRequestModel(String token, String user, String interets) {
+    public AddInterestRequestModel(String token, String user, String interest) {
         this.token = token;
         this.user = user;
-        this.interets = interets;
+        this.interest = interest;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 }
