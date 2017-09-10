@@ -35,7 +35,7 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
         Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
         //create notification
-        createNotification(remoteMessage.getNotification().getBody());
+        createNotification(newChat.getMessage());
 
         String name = randomName();
         // realm things

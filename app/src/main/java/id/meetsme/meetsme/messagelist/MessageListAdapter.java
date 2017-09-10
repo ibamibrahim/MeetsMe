@@ -1,11 +1,13 @@
 package id.meetsme.meetsme.messagelist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.chat.ChatActivity;
 import id.meetsme.meetsme.services.models.chat.ChatModel;
 
 /**
@@ -23,7 +26,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     Context context;
     List<ChatModel> dataSet;
-
 
     public MessageListAdapter(Context c) {
         this.context = c;
@@ -77,24 +79,23 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         public ViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View itemView) {
+                    if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        Context c = itemView.getContext();
+                        ChatModel model = dataSet.get(getAdapterPosition());
+                        Intent intent = new Intent(c, ChatActivity.class);
+                        intent.putExtra("user_id", model.getUser_id());
+                        intent.putExtra("name", model.getUsername());
+                        intent.putExtra("occupation", "Software Engineer");
+                        Toast.makeText(c, model.getUser_id() + "", Toast.LENGTH_SHORT).show();
+                        c.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 
-    public class CallListener implements View.OnClickListener {
-
-        Context context;
-        java.lang.String number;
-
-        public CallListener(Context context, java.lang.String number) {
-            this.context = context;
-            this.number = number;
-        }
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-
-            }
-        }
-    }
 }
