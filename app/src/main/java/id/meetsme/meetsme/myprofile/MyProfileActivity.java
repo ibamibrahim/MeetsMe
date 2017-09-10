@@ -59,7 +59,7 @@ public class MyProfileActivity extends BaseFragment implements MyProfileContract
     }
 
     private void initArray() {
-        interestList = new String[]{"Football", "Taekwondo", "Formula One", "Basketball", "Badminton", "Teaching", "Education", "Environment", "Renewable", "Energy", "Artificial Intelligence", "Public Speaking", "Politic"};
+        interestList = new String[]{"Football", "Taekwondo", "Formula One", "Basketball", "Badminton", "Teaching", "Education", "Environment", "Renewable Energy", "Artificial Intelligence", "Public Speaking", "Politic"};
     }
 
     public void initPresenter() {

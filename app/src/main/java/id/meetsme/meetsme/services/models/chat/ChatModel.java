@@ -18,16 +18,33 @@ public class ChatModel extends RealmObject {
     private String lastTimStamp;
     private RealmList<MessageModel> messages;
 
-
     public ChatModel() {
+        messages = new RealmList<>();
+
     }
 
     public ChatModel(int user_id, String username, String lastMessage, String lastTimStamp) {
-
+        messages = new RealmList<>();
         this.user_id = user_id;
         this.username = username;
         this.lastMessage = lastMessage;
         this.lastTimStamp = lastTimStamp;
+    }
+
+    public int getChat_id() {
+        return chat_id;
+    }
+
+    public void setChat_id(int chat_id) {
+        this.chat_id = chat_id;
+    }
+
+    public RealmList<MessageModel> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(RealmList<MessageModel> messages) {
+        this.messages = messages;
     }
 
     public int getUser_id() {
