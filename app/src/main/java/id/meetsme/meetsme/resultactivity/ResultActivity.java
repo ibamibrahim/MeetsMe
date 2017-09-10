@@ -28,7 +28,9 @@ import java.util.Random;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.chat.ChatActivity;
 import id.meetsme.meetsme.helper.Helper;
+import id.meetsme.meetsme.services.RealmServices;
 import id.meetsme.meetsme.services.models.MapsModel;
 import id.meetsme.meetsme.services.models.response.matchmaking.Datum;
 import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
@@ -167,7 +169,7 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
         }
 
         map.setInfoWindowAdapter(new CustomInfoWindow());
-        map.setOnInfoWindowClickListener(this) ;
+        map.setOnInfoWindowClickListener(this);
         map.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 1000, null);
         //map.setInfoWindowAdapter(new CustomInfoWindow(this, null));
     }
@@ -176,6 +178,13 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
     public void onInfoWindowClick(Marker marker) {
         MapsModel model = (MapsModel) marker.getTag();
         showToast(model.getId() + "");
+        RealmServices.createChatRoom(model.getId(), model.getName(), "test",
+                getApplicationContext());
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("user_id", model.getId());
+        intent.putExtra("name", model.getName());
+        intent.putExtra("occupation", model.getOccupation());
+        startActivity(intent);
     }
 
     @Override

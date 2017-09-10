@@ -6,7 +6,7 @@
               android:padding="8dp">
 
     <TextView
-        android:id="@+id/sender"
+        android:id="@+id/message_sender"
         style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/message_content"
         style="@style/sub_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

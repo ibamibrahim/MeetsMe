@@ -68,7 +68,6 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.google.code.gson:gson:2.8.1'
-    compile 'com.github.thorbenprimke:realm-recycler-view:0.9.5'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.thomashaertel:multispinner:0.1.1@aar'

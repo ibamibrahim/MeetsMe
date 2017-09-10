@@ -49,14 +49,14 @@ public class RealmServices {
 
     }
 
-    public List<ChatModel> getAllChatRoom() {
+    public static List<ChatModel> getAllChatRoom() {
         Realm realm = Realm.getDefaultInstance();
         RealmResults<ChatModel> result = realm.where(ChatModel.class).findAll();
         result.size();
         return realm.copyFromRealm(result);
     }
 
-    public RealmList<MessageModel> getAllMessage(int user_id) {
+    public static RealmList<MessageModel> getAllMessage(int user_id) {
         Realm realm = Realm.getDefaultInstance();
         ChatModel chatRoom = realm.where(ChatModel.class).equalTo("user_id", user_id).findFirst();
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import id.meetsme.meetsme.BasePresenter;
 import id.meetsme.meetsme.BaseView;
+import id.meetsme.meetsme.services.models.chat.ChatModel;
 import id.meetsme.meetsme.services.models.response.MessageListModel;
 
 /**
@@ -13,7 +14,7 @@ import id.meetsme.meetsme.services.models.response.MessageListModel;
 public interface MessageListContract {
 
     interface View extends BaseView<Presenter> {
-        void updateMessageList(List<MessageListModel> list);
+        void updateMessageList(List<ChatModel> list);
     }
 
     interface Presenter extends BasePresenter {

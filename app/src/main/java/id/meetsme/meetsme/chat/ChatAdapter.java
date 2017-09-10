@@ -1,4 +1,4 @@
-package id.meetsme.meetsme.messagelist;
+package id.meetsme.meetsme.chat;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,38 +13,34 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.R;
-import id.meetsme.meetsme.services.models.chat.ChatModel;
+import id.meetsme.meetsme.services.models.chat.MessageModel;
 
 /**
- * Created by Ibam on 8/31/2017.
+ * Created by Ibam on 9/10/2017.
  */
 
-public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.ViewHolder> {
-
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     Context context;
-    List<ChatModel> dataSet;
+    List<MessageModel> dataSet;
 
 
-    public MessageListAdapter(Context c) {
+    public ChatAdapter(Context c) {
         this.context = c;
         dataSet = new ArrayList<>();
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ChatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_chat_list, parent, false);
-        return new MessageListAdapter.ViewHolder(view);
+                .inflate(R.layout.item_message, parent, false);
+        return new ChatAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        ChatModel model = dataSet.get(position);
-
-        holder.senderName.setText(model.getUsername());
-        holder.chatCount.setText("0");
-        holder.lastMessage.setText(model.getLastMessage());
-        holder.timeStamp.setText(model.getLastTimStamp());
+    public void onBindViewHolder(ChatAdapter.ViewHolder holder, int position) {
+        MessageModel model = dataSet.get(position);
+        holder.messageContent.setText(model.getContent());
+        holder.messageSender.setText(model.getSender());
     }
 
     @Override
@@ -52,27 +48,21 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         return dataSet.size();
     }
 
-    public List<ChatModel> getDataSet() {
+    public List<MessageModel> getDataSet() {
         return dataSet;
     }
 
-    public void setDataSet(List<ChatModel> dataSet) {
+    public void setDataSet(List<MessageModel> dataSet) {
         this.dataSet = dataSet;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.sender_name)
-        public TextView senderName;
+        @BindView(R.id.message_sender)
+        public TextView messageSender;
+        @BindView(R.id.message_content)
+        public TextView messageContent;
 
-        @BindView(R.id.last_message)
-        public TextView lastMessage;
-
-        @BindView(R.id.time_stamp)
-        public TextView timeStamp;
-
-        @BindView(R.id.chat_count)
-        public TextView chatCount;
 
         public ViewHolder(View v) {
             super(v);

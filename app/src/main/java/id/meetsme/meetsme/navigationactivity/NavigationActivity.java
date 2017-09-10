@@ -99,7 +99,7 @@ public class NavigationActivity extends BaseActivity {
                         public void run() {
                             model.showBadge();
                         }
-                    }, i * 100);
+                    }, i * 10);
                 }
             }
         }, 500);

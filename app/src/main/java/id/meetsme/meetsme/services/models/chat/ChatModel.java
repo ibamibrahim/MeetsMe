@@ -10,8 +10,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class ChatModel extends RealmObject {
 
-    @PrimaryKey
-    private int chat_id;
     private int user_id;
     private String username;
     private String lastMessage;
@@ -31,13 +29,6 @@ public class ChatModel extends RealmObject {
         this.lastTimStamp = lastTimStamp;
     }
 
-    public int getChat_id() {
-        return chat_id;
-    }
-
-    public void setChat_id(int chat_id) {
-        this.chat_id = chat_id;
-    }
 
     public RealmList<MessageModel> getMessages() {
         return messages;

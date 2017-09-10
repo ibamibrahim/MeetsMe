@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import id.meetsme.meetsme.services.RealmServices;
+import id.meetsme.meetsme.services.models.chat.ChatModel;
 import id.meetsme.meetsme.services.models.response.MessageListModel;
 
 /**
@@ -25,8 +27,8 @@ public class MessageListPresenter implements MessageListContract.Presenter {
 
     }
 
-    @Override
-    public void loadMessage() {
+
+    /*public void loadMessage() {
         Random random = new Random();
         List<MessageListModel> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -38,6 +40,12 @@ public class MessageListPresenter implements MessageListContract.Presenter {
             list.add(model);
         }
         mView.updateMessageList(list);
+    }*/
+
+    @Override
+    public void loadMessage(){
+        List<ChatModel> allMessages = RealmServices.getAllChatRoom();
+        mView.updateMessageList(allMessages);
     }
 
     private java.lang.String randomString(int length) {

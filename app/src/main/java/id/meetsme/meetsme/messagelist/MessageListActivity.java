@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.meetsme.meetsme.BaseFragment;
 import id.meetsme.meetsme.R;
-import id.meetsme.meetsme.services.models.response.MessageListModel;
+import id.meetsme.meetsme.services.models.chat.ChatModel;
 
 /**
  * Created by Ibam on 8/31/2017.
@@ -58,15 +58,19 @@ public class MessageListActivity extends BaseFragment implements MessageListCont
     }
 
     @Override
-    public void updateMessageList(List<MessageListModel> list) {
+    public void updateMessageList(List<ChatModel> list) {
+        list = reverseList(list);
         adapter.setDataSet(list);
         adapter.notifyDataSetChanged();
+    }
+
+    private List<ChatModel> reverseList(List<ChatModel> list) {
+
+        return list;
     }
 
     @Override
     public void setPresenter(MessageListContract.Presenter presenter) {
 
     }
-
-
 }
