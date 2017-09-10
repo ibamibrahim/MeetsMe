@@ -6,7 +6,7 @@ import id.meetsme.meetsme.services.models.request.LoginRequestModel;
 import id.meetsme.meetsme.services.models.request.MatchMakingRequestModel;
 import id.meetsme.meetsme.services.models.request.RegisterRequestModel;
 import id.meetsme.meetsme.services.models.response.AddUserInterestResponse;
-import id.meetsme.meetsme.services.models.response.MatchMakingResponse;
+import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
 import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 import id.meetsme.meetsme.services.models.response.register.RegisterResponseModel;

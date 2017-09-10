@@ -16,4 +16,21 @@
     <string name="main_activity_button">Match people automatically</string>
     <string name="message_notes">Notes: Your chat with another user will be deleted after one hour</string>
     <string name="edit_profile_button">Log out</string>
+    <string-array name="anonymous_name">
+        <item>Anonymous Cat</item>
+        <item>Anonymous Turtle</item>
+        <item>Anonymous Bird</item>
+        <item>Anonymous Elephant</item>
+        <item>Anonymous Dog</item>
+        <item>Anonymous Snake</item>
+        <item>Anonymous Fox</item>
+        <item>Anonymous Tiger</item>
+        <item>Anonymous Bear</item>
+        <item>Anonymous Crocodile</item>
+        <item>Anonymous Lion</item>
+        <item>Anonymous Horse</item>
+        <item>Anonymous Leopard</item>
+        <item>Anonymous Kitten</item>
+        <item>Anonymous Puppy</item>
+    </string-array>
 </resources>

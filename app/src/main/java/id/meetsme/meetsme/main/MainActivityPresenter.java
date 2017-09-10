@@ -1,12 +1,13 @@
 package id.meetsme.meetsme.main;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 
 import id.meetsme.meetsme.services.LocalServices;
 import id.meetsme.meetsme.services.RemoteServices;
-import id.meetsme.meetsme.services.models.response.MatchMakingResponse;
+import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
 import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -18,6 +19,7 @@ import rx.schedulers.Schedulers;
 
 public class MainActivityPresenter implements MainActivityContract.Presenter {
 
+    private static final String TAG = "MainActivityPresenter";
     MainActivityContract.View mView;
 
     @Override
@@ -35,9 +37,15 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         String token = LocalServices.getToken(context);
         String userId = LocalServices.getUserId(context) + "";
         String interest = LocalServices.getUserInterest(context);
-
+        Log.i(TAG, "token: " + token);
+        Log.i(TAG, "userId: " + userId);
+        Log.i(TAG, "interest: " + interest);
+        Log.i(TAG, "latitude: " + latitude);
+        Log.i(TAG, "logitude: " + longitude);
+        String latStr = latitude + "";
+        String lonStr = longitude + "";
         final RemoteServices remoteServices = new RemoteServices();
-        remoteServices.matchMaking(token, userId, interest, latitude, longitude)
+        remoteServices.matchMaking(token, userId, interest, latStr, lonStr)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<Response<MatchMakingResponse>>() {

@@ -18,8 +18,8 @@ import id.meetsme.meetsme.services.LocalServices;
  * Created by Ibam on 8/30/2017.
  */
 
-public class BaseFragment extends Fragment{
-    private ProgressDialog mProgressDialog;
+public class BaseFragment extends Fragment {
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -28,15 +28,15 @@ public class BaseFragment extends Fragment{
     }
 
     public void showProgressDialog(String text) {
-        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage(text);
         progressDialog.setCancelable(true);
-        mProgressDialog.show();
+        progressDialog.show();
     }
 
     public void hideDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 

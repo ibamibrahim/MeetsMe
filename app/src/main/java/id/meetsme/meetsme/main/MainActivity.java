@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import id.meetsme.meetsme.BaseFragment;
 import id.meetsme.meetsme.R;
 import id.meetsme.meetsme.helper.Helper;
 import id.meetsme.meetsme.resultactivity.ResultActivity;
+import id.meetsme.meetsme.services.models.response.matchmaking.MatchMakingResponse;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -27,6 +29,7 @@ import static android.content.Context.LOCATION_SERVICE;
  */
 
 public class MainActivity extends BaseFragment implements MainActivityContract.View {
+    private static final String TAG = "MainActivity";
     MainActivityPresenter mPresenter;
     LocationManager mLocationManager;
 
@@ -56,19 +59,21 @@ public class MainActivity extends BaseFragment implements MainActivityContract.V
     }
 
     private void matchmaking(double longitude, double lat) {
-        showProgressDialog("Loading...");
+        showProgressDialog("Finding your next best buddies..");
         mPresenter.matchmaking(longitude, lat, getContext());
     }
 
     @Override
-    public void matchmakingResult(boolean status, String message, Object matchingList) {
+    public void matchmakingResult(boolean status, String message, MatchMakingResponse matchingList) {
         hideDialog();
         if (status) {
             String matchingListJson = Helper.objectToJson(matchingList);
             Intent intent = new Intent(getContext(), ResultActivity.class);
             intent.putExtra("result", matchingListJson);
+            Log.i(TAG, "matchmakingResult: " + matchingListJson);
             startActivity(intent);
         } else {
+            Log.i(TAG, "matchmakingResult: " + message);
             showToast(message);
         }
     }

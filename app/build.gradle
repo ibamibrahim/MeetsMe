@@ -4,6 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
+        multiDexEnabled true
         applicationId "id.meetsme.meetsme"
         minSdkVersion 21
         targetSdkVersion 25
@@ -18,7 +19,7 @@ android {
         }
     }
 
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/rxjava.properties'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE-FIREBASE.txt'
