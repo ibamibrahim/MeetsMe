@@ -1,7 +1,5 @@
 package id.meetsme.meetsme.services;
 
-import android.content.Context;
-
 import java.util.List;
 
 import id.meetsme.meetsme.services.models.chat.ChatModel;
@@ -62,5 +60,15 @@ public class RealmServices {
         RealmList<MessageModel> allMessages = chatRoom.getMessages();
 
         return allMessages;
+    }
+
+    public static String getRandomName(int user_id) {
+        String result = null;
+        Realm realm = Realm.getDefaultInstance();
+        ChatModel model = realm.where(ChatModel.class).equalTo("user_id",user_id).findFirst();
+        if(model != null){
+            result = model.getUsername();
+        }
+        return result;
     }
 }

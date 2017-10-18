@@ -37,7 +37,13 @@ public class FirebaseMsgService extends FirebaseMessagingService {
         //create notification
         createNotification(newChat.getMessage());
 
-        String name = randomName();
+        String name = RealmServices.getRandomName(Integer.parseInt(newChat.getSender_id()));
+
+        // if user name has not existed yet
+        if (name == null) {
+            name = randomName();
+        }
+
         // realm things
         RealmServices.createChatRoom(Integer.parseInt(newChat.getSender_id()), name, newChat
                 .getMessage
