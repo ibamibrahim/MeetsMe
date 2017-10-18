@@ -39,7 +39,8 @@ public class MyProfileAdapter extends RecyclerView.Adapter<MyProfileAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String interest = dataSet.get(position);
-
+        int count = position+1;
+        holder.count.setText(count+"");
         holder.interest.setText(interest);
     }
 
@@ -60,6 +61,9 @@ public class MyProfileAdapter extends RecyclerView.Adapter<MyProfileAdapter.View
 
         @BindView(R.id.interest)
         TextView interest;
+
+        @BindView(R.id.interest_count)
+        TextView count;
 
 
         public ViewHolder(View v) {

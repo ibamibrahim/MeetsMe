@@ -44,7 +44,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         ChatModel model = dataSet.get(position);
 
         holder.senderName.setText(model.getUsername());
-        holder.chatCount.setText("0");
         holder.lastMessage.setText(model.getLastMessage());
         holder.timeStamp.setText(model.getLastTimStamp());
     }
@@ -72,9 +71,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
         @BindView(R.id.time_stamp)
         public TextView timeStamp;
-
-        @BindView(R.id.chat_count)
-        public TextView chatCount;
 
         public ViewHolder(View v) {
             super(v);

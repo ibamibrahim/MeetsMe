@@ -58,16 +58,6 @@
                 android:text="21.10"
                 android:textAlignment="textEnd"/>
 
-            <TextView
-                android:id="@+id/chat_count"
-                style="@style/chat_count"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:text="3"
-                android:textColor="#fff"
-                android:textSize="12sp"/>
-
         </LinearLayout>
 
 

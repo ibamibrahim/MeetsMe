@@ -6,6 +6,7 @@
               android:padding="8dp">
 
     <TextView
+        android:id="@+id/interest_count"
         style="@style/chat_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
