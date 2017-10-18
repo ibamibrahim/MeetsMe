@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -100,5 +101,11 @@ public class MyProfileActivity extends BaseFragment implements MyProfileContract
     @Override
     public void setPresenter(MyProfileContract.Presenter presenter) {
 
+    }
+
+    @OnClick(R.id.profile_edit)
+    void editProfile() {
+        Toast.makeText(getContext(), "This feature is has not implemented, yet", Toast.LENGTH_SHORT)
+                .show();
     }
 }

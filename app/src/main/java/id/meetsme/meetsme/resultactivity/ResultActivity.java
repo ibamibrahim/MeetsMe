@@ -178,7 +178,7 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
     public void onInfoWindowClick(Marker marker) {
         MapsModel model = (MapsModel) marker.getTag();
         if (model != null) {
-            showToast(model.getId() + "");
+            //showToast(model.getId() + "");
             RealmServices.createChatRoom(model.getId(), model.getName(), "test");
             Intent intent = new Intent(this, ChatActivity.class);
             intent.putExtra("user_id", model.getId());
