@@ -17,5 +17,6 @@ public interface ResultContract {
     }
 
     interface Presenter extends BasePresenter {
+        /*void clearLocation(Context context);*/
     }
 }

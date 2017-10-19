@@ -1,5 +1,7 @@
 package id.meetsme.meetsme.services;
 
+import java.util.HashMap;
+
 import id.meetsme.meetsme.services.models.request.AddInterestRequestModel;
 import id.meetsme.meetsme.services.models.request.CreateProfileRequestModel;
 import id.meetsme.meetsme.services.models.request.LoginRequestModel;
@@ -73,6 +75,13 @@ public class RemoteServices implements ServicesContract.Remote {
         return retrofit.sendMessage(token, new SendMessageRequestModel(user_id, recipient,
                 message, tempTOken));
     }
+
+    /*public Observable<Response<String>> clearLocation(String token, String user_id) {
+        initRetrofit();
+        HashMap<String, String> data = new HashMap<>();
+        data.put("id", user_id);
+        return retrofit.clearLoc(token, data);
+    }*/
 
     private void initRetrofit() {
         this.retrofit = getRetrofit(BASE_URL);
