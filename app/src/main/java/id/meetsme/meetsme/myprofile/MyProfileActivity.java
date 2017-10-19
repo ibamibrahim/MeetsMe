@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.meetsme.meetsme.BaseFragment;
 import id.meetsme.meetsme.R;
+import id.meetsme.meetsme.editprofile.EditProfileActivity;
 import id.meetsme.meetsme.register.RegisterActivity;
 import id.meetsme.meetsme.services.LocalServices;
 
@@ -105,7 +105,9 @@ public class MyProfileActivity extends BaseFragment implements MyProfileContract
 
     @OnClick(R.id.profile_edit)
     void editProfile() {
-        Toast.makeText(getContext(), "This feature is has not implemented, yet", Toast.LENGTH_SHORT)
-                .show();
+        String json = LocalServices.getUserDetail(getContext());
+        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+        intent.putExtra("data", json);
+        startActivity(intent);
     }
 }

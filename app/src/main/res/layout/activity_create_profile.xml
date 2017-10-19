@@ -9,6 +9,7 @@
     >
 
     <TextView
+        android:id="@+id/edit_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_create_prof"
@@ -18,6 +19,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/edit_subtitle"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -63,11 +65,13 @@
             />
 
         <RadioButton
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="male"/>
 
         <RadioButton
+            android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="female"/>
@@ -101,12 +105,6 @@
         android:textColor="@color/colorPrimaryDark"
         android:visibility="gone"/>
 
-    <TextView
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/select_interest"
-        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/join_now_button"

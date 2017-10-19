@@ -1,4 +1,4 @@
-package id.meetsme.meetsme.createprofile;
+package id.meetsme.meetsme.editprofile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -24,16 +24,17 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.meetsme.meetsme.BaseActivity;
 import id.meetsme.meetsme.R;
-import id.meetsme.meetsme.login.LoginActivity;
+import id.meetsme.meetsme.helper.Helper;
 import id.meetsme.meetsme.services.models.response.editprof.EditProfResponseModel;
+import id.meetsme.meetsme.services.models.response.login.LoginResponseModel;
 
 /**
  * Created by Ibam on 8/28/2017.
  */
 
-public class CreateProfileActivity extends BaseActivity implements CreateProfileContract.View {
+public class EditProfileActivity extends BaseActivity implements EditProfileContract.View {
     private static final String TAG = "EditProfileActivity";
-    CreateProfilePresenter mPresenter;
+    EditProfilePresenter mPresenter;
     @BindView(R.id.join_now_button)
     TextView joinNowButton;
     @BindView(R.id.create_interest)
@@ -46,8 +47,18 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     EditText inputOccup;
     @BindView(R.id.create_sex)
     RadioGroup inputSex;
+    @BindView(R.id.edit_title)
+    TextView title;
+    @BindView(R.id.male)
+    RadioButton male;
+    @BindView(R.id.female)
+    RadioButton female;
+    @BindView(R.id.edit_subtitle)
+    TextView subtitle;
+
     SpinnerOnClickListener listener;
     Calendar myCalendar;
+    LoginResponseModel user;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,14 +67,36 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
 
         ButterKnife.bind(this);
         myCalendar = Calendar.getInstance();
-
+        title.setText("Edit profile");
+        subtitle.setText("");
+        joinNowButton.setText("Save");
+        initIntent();
         initPresenter();
         initInterest();
         initDatePicker();
     }
 
+    private void initIntent() {
+        Intent intent = getIntent();
+        String json = intent.getStringExtra("data");
+        user = Helper.jsonToObject(json, LoginResponseModel.class);
+        if (user != null) {
+            inputBirthday.setText(user.getUser().getBirthDate());
+            if (user.getUser().getSex().equals("male")) {
+                male.setSelected(true);
+            } else {
+                female.setSelected(true);
+            }
+            inputBirthday.setVisibility(View.GONE);
+            inputSex.setVisibility(View.GONE);
+            inputOccup.setText(user.getUser().getOccupation());
+            inputInterest.setText(user.getUser().getUserInterest().toString());
+            Log.i(TAG, "initIntent: " + user.getUser().getUserInterest().size());
+        }
+    }
+
     private void initPresenter() {
-        mPresenter = new CreateProfilePresenter();
+        mPresenter = new EditProfilePresenter();
         mPresenter.setView(this);
     }
 
@@ -108,7 +141,7 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(CreateProfileActivity.this, date, myCalendar
+                new DatePickerDialog(EditProfileActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -121,12 +154,12 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
         RadioButton selected = (RadioButton) findViewById(selectedSex);
 
         String occupation = inputOccup.getText().toString();
-        String birthday = inputBirthday.getText().toString();
+        String birthday = user.getUser().getBirthDate();
         String interest = listener.getSelected();
         Log.i(TAG, "joinNow: interest " + interest);
         String sex;
         try {
-            sex = selected.getText().toString();
+            sex = user.getUser().getSex();
             if (occupation.equals("") || birthday.equals("") || interest.equals("") || sex.equals("")) {
                 showToast("All field must be filled!");
             } else {
@@ -146,17 +179,14 @@ public class CreateProfileActivity extends BaseActivity implements CreateProfile
     @Override
     public void createProfileStatus(boolean status, String message, EditProfResponseModel model) {
         hideDialog();
-        showToast(message);
         if (status) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
             finish();
         }
     }
 
     @Override
-    public void setPresenter(CreateProfileContract.Presenter presenter) {
-        this.mPresenter = (CreateProfilePresenter) presenter;
+    public void setPresenter(EditProfileContract.Presenter presenter) {
+        this.mPresenter = (EditProfilePresenter) presenter;
     }
 
     private class SpinnerOnClickListener implements MultiSpinner.MultiSpinnerListener {

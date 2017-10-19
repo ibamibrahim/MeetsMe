@@ -33,6 +33,7 @@
 
         </activity>
         <activity android:name=".chat.ChatActivity"/>
+        <activity android:name=".editprofile.EditProfileActivity"/>
 
         <service
             android:name=".services.firebase.FirebaseMsgService">
