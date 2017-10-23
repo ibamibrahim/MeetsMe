@@ -28,7 +28,7 @@ public class ResultPresenter implements ResultContract.Presenter {
     public void unsetView(Object view) {
     }
 
-   /* @Override
+    @Override
     public void clearLocation(Context context) {
         String userId = LocalServices.getUserId(context) + "";
         String token = LocalServices.getToken(context);
@@ -52,5 +52,5 @@ public class ResultPresenter implements ResultContract.Presenter {
                         Log.i(TAG, "onNext: " + response.isSuccessful());
                     }
                 });
-    }*/
+    }
 }

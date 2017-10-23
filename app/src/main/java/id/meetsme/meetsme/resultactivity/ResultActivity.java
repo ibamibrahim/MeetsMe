@@ -138,11 +138,11 @@ public class ResultActivity extends BaseActivity implements ResultContract.View,
         mPresenter.setView(this);
     }
 
-  /*  @Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.clearLocation(this);
-    }*/
+    }
 
     @Override
     public void onMapReady(GoogleMap map) {

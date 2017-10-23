@@ -51,7 +51,7 @@ public interface MeetsMeAPIServices {
     Observable<Response<ChatIncomingModel>> sendMessage(@Header("Authorization") String token,
                                                         @Body SendMessageRequestModel model);
 
-    /*@POST("/api/v1/match-making/clear-location/")
+    @POST("/api/v1/match-making/clear-location/")
     Observable<Response<String>> clearLoc(@Header("Authorization") String token, @Body HashMap<String,
-            String> body);*/
+            String> body);
 }
